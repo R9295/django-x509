@@ -4,3 +4,4 @@ django>=1.10,<1.12
 django-model-utils
 jsonfield
 cryptography==2.1.2
+uuid

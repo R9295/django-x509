@@ -11,7 +11,7 @@ from jsonfield import JSONField
 from model_utils.fields import AutoCreatedField, AutoLastModifiedField
 from OpenSSL import crypto
 from six import string_types
-
+import uuid
 from .. import settings as app_settings
 from ..utils import bytes_compat
 
@@ -163,7 +163,7 @@ class BaseX509(models.Model):
         if generate:
             # automatically determine serial number
             if not self.serial_number:
-                self.serial_number = self.id
+                self.serial_number = uuid.uuid4()
             self._generate()
             kwargs['force_insert'] = False
             super(BaseX509, self).save(*args, **kwargs)
